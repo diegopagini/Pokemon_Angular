@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { PokemonDetails } from 'src/app/modules/pokemons/models/pokemon-details.model';
 import { environment } from 'src/environments/environment';
 import { Pokemon, Result, ServiceResponse } from '../models/pokemon.model';
 
@@ -11,10 +12,13 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getAllPokemons(): Observable<Pokemon[]> {
-    // TODO: utilizar interceptor
     return this.http
-      .get<ServiceResponse>(`${environment.baseUrl}/pokemon?limit=1000`)
+      .get<ServiceResponse>(`/pokemon?limit=1000`)
       .pipe(map(this.transformData));
+  }
+
+  getPokemon(id: string): Observable<PokemonDetails> {
+    return this.http.get<PokemonDetails>(`/pokemon/${id}`);
   }
 
   private transformData(resp: ServiceResponse): Pokemon[] {

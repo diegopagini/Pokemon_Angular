@@ -1,0 +1,5 @@
+<ng-container *ngIf="pokemons">
+  <section class="list">
+    <pok-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></pok-card>
+  </section>
+</ng-container>
