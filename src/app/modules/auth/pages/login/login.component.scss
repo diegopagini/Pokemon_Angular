@@ -1,0 +1,9 @@
+@import "../../../../../assets/styles/base";
+
+.login-page {
+  background-image: $gradient;
+  height: 100%;
+  width: 100%;
+
+  @include center;
+}

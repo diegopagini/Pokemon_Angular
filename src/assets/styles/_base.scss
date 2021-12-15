@@ -1,0 +1,14 @@
+$gradient: linear-gradient(
+  to bottom,
+  #d6d630,
+  #e7b00f,
+  #f0881a,
+  #ee5e30,
+  #e12e46
+);
+
+@mixin center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
