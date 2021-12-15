@@ -1,3 +1,26 @@
+@import "../../../../assets/styles/base";
+
 .card {
   margin: 1rem;
+
+  &-header,
+  &-content,
+  &-actions {
+    @include center;
+  }
+
+  &-content {
+    img {
+      cursor: pointer;
+      transition: all 0.25s;
+
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+  }
+
+  &-actions {
+    justify-content: space-between;
+  }
 }

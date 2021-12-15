@@ -1,21 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
-import { ApiService } from 'src/app/core/services/api.service';
-import { PokemonDetails } from 'src/app/modules/pokemons/models/pokemon-details.model';
 
 @Component({
   selector: 'pok-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() pokemon: Pokemon;
-  pokemon$: Observable<PokemonDetails>;
+  inTeam: boolean = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.pokemon$ = this.apiService.getPokemon(this.pokemon.id);
+  addToTeam(): void {
+    this.inTeam = !this.inTeam;
+  }
+
+  seeDetails(): void {
+    this.router.navigate(['pokemons/details', this.pokemon.name]);
   }
 }
