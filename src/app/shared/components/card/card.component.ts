@@ -18,6 +18,6 @@ export class CardComponent {
   }
 
   seeDetails(): void {
-    this.router.navigate(['pokemons/details', this.pokemon.name]);
+    this.router.navigate(['pokemons/details', this.pokemon.id]);
   }
 }

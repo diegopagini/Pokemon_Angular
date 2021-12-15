@@ -1,1 +1,9 @@
-<p>details works!</p>
+<ng-container *ngIf="pokemon$ | async as pokemon; else loading">
+  <section class="details">
+    <pok-pokemon-details [pokemon]="pokemon"></pok-pokemon-details>
+  </section>
+</ng-container>
+
+<ng-template #loading>
+  <pok-spinner></pok-spinner>
+</ng-template>

@@ -1,0 +1,16 @@
+<ng-container *ngIf="pokemon">
+  <section class="details animate__animated animate__fadeIn">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ pokemon.name | uppercase }}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          [src]="pokemon.sprites?.other?.dream_world?.front_default"
+          [alt]="pokemon.name"
+        />
+      </mat-card-content>
+    </mat-card>
+  </section>
+</ng-container>
