@@ -1,0 +1,27 @@
+.nav {
+  width: 100%;
+
+  &-list {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+
+    &-item {
+      cursor: pointer;
+      text-transform: uppercase;
+
+      transition: all 0.5s;
+
+      &:hover {
+        color: red;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.active {
+  color: red;
+  font-weight: bold;
+}

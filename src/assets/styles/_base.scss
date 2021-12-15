@@ -12,3 +12,12 @@ $gradient: linear-gradient(
   display: flex;
   justify-content: center;
 }
+
+@mixin container {
+  min-height: calc(100vh - 144px);
+  padding: 1rem 2rem;
+
+  @media (min-width: 991px) {
+    min-height: calc(100vh - 160px);
+  }
+}
