@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'pok-route',
   templateUrl: './route.component.html',
-  styleUrls: ['./route.component.scss']
+  styleUrls: ['./route.component.scss'],
 })
-export class RouteComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class RouteComponent {
+  @Input() route: any;
 }

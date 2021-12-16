@@ -17,7 +17,7 @@ export class RoutesComponent {
       name: 'form',
       path: '/form',
       background_color: '#FE1111',
-      img: 'https://www.baltana.com/files/wallpapers-1/Prey-Game-Lab-Wallpaper-01007.jpg',
+      img: 'https://www.labnetinternational.com/sites/www.labnetinternational.com/files/blogsies/header-images/iStock-949946968.jpg',
     },
     {
       name: 'team',

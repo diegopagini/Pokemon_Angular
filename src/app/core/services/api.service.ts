@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { PokemonDetails } from 'src/app/modules/pokemons/models/pokemon-details.model';
-import { environment } from 'src/environments/environment';
 import { Pokemon, Result, ServiceResponse } from '../models/pokemon.model';
 
 @Injectable({
