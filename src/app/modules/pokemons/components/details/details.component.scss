@@ -1,1 +1,30 @@
 @import "../../../../../assets/styles/base";
+
+:host {
+  mat-card-header,
+  mat-card-content {
+    flex-direction: column;
+    @include center;
+  }
+
+  @media (min-width: 991px) {
+    min-width: 560px;
+    max-width: 1440px;
+  }
+
+  .details-info {
+    padding: 0.5rem 1rem;
+    width: 100%;
+  }
+}
+
+.back-button {
+  bottom: 1rem;
+  right: 1rem;
+  position: fixed;
+
+  @media (min-width: 991px) {
+    bottom: 6rem;
+    right: 6rem;
+  }
+}

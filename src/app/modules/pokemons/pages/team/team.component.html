@@ -1,1 +1,7 @@
-<p>team works!</p>
+<ng-container *ngIf="pokemons$ | async as pokemons; else loading">
+  <pok-list-grid [inTeam]="true" [pokemons]="pokemons"></pok-list-grid>
+</ng-container>
+
+<ng-template #loading>
+  <pok-spinner></pok-spinner>
+</ng-template>

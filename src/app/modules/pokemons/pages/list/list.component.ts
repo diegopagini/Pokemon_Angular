@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
 import { ApiService } from 'src/app/core/services/api.service';
 
@@ -15,5 +15,19 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemons$ = this.apiService.getAllPokemons();
+  }
+
+  searchPokemons(search: string): void {
+    if (search.length > 0) {
+      this.pokemons$ = this.apiService
+        .getAllPokemons()
+        .pipe(
+          map((pokemons: Pokemon[]) =>
+            pokemons.filter((pokemon: Pokemon) => pokemon.name.includes(search))
+          )
+        );
+    } else {
+      this.pokemons$ = this.apiService.getAllPokemons();
+    }
   }
 }

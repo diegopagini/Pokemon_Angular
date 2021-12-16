@@ -1,0 +1,13 @@
+<section class="search">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Search</mat-label>
+    <input
+      autocomplete="off"
+      type="email"
+      matInput
+      #input
+      [(ngModel)]="searchValue"
+      (keyup)="search()"
+    />
+  </mat-form-field>
+</section>

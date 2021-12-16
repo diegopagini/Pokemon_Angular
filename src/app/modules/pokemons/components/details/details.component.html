@@ -1,16 +1,54 @@
 <ng-container *ngIf="pokemon">
   <section class="details animate__animated animate__fadeIn">
     <mat-card>
+      <div
+        mat-card-avatar
+        [ngStyle]="{
+          'background-image':
+            'url(' + pokemon.sprites?.other?.home?.front_default + ')',
+          'background-size': 'cover'
+        }"
+      ></div>
       <mat-card-header>
-        <mat-card-title>{{ pokemon.name | uppercase }}</mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
+        <mat-card-title class="details-title">{{
+          pokemon.name | uppercase
+        }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <img
           [src]="pokemon.sprites?.other?.dream_world?.front_default"
           [alt]="pokemon.name"
         />
+        <div class="details-info">
+          <span>Abilities:</span>
+          <hr />
+          <button mat-button *ngFor="let ability of pokemon.abilities">
+            {{ ability.ability?.name }}
+          </button>
+        </div>
+
+        <div class="details-info">
+          <span>Moves:</span>
+          <hr />
+          <button mat-button *ngFor="let move of pokemon.moves">
+            {{ move.move?.name }}
+          </button>
+        </div>
+
+        <div class="details-info">
+          <span>Types:</span>
+          <hr />
+          <button mat-button *ngFor="let type of pokemon.types">
+            {{ type.type?.name }}
+          </button>
+        </div>
       </mat-card-content>
     </mat-card>
   </section>
 </ng-container>
+
+<div class="back-button">
+  <button mat-fab routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
