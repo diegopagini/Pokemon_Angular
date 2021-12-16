@@ -31,6 +31,7 @@ export class ApiService {
         pic,
         name: poke.name,
         inTeam: false,
+        notCustom: true,
       };
     });
 

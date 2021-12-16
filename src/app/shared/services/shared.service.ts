@@ -9,13 +9,27 @@ export class SharedService {
   private subject = new BehaviorSubject<any>([]);
   private pokemonTeam$: Observable<Pokemon[]> = this.subject.asObservable();
 
+  private customSubject = new BehaviorSubject<any>([]);
+  private customPokemons$: Observable<any[]> =
+    this.customSubject.asObservable();
+
   get pokemonTeam(): Observable<Pokemon[]> {
     return this.pokemonTeam$;
   }
 
-  addToTeam(pokemon: Pokemon) {
+  get customPokemons(): Observable<any[]> {
+    return this.customPokemons$;
+  }
+
+  addToTeam(pokemon: Pokemon): void {
     const previousValue = this.subject.value;
     const updatedValue = [...previousValue, pokemon];
     this.subject.next(updatedValue);
+  }
+
+  createCustomPokemon(pokemon: any): void {
+    const previousValue = this.customSubject.value;
+    const updatedValue = [...previousValue, pokemon];
+    this.customSubject.next(updatedValue);
   }
 }

@@ -4,7 +4,7 @@
       <mat-card-title>{{ pokemon.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content class="card-content">
-      <img [src]="pokemon.pic" [alt]="pokemon.name" loading="lazy" />
+      <img [src]="pokemon.pic | safe" [alt]="pokemon.name" loading="lazy" />
     </mat-card-content>
 
     <mat-card-actions class="card-actions">
@@ -17,7 +17,12 @@
         <mat-icon *ngIf="!pokemon.inTeam">favorite_border</mat-icon>
         <mat-icon *ngIf="pokemon.inTeam">favorite</mat-icon>
       </button>
-      <button mat-icon-button color="primary" (click)="seeDetails()">
+      <button
+        [disabled]="!pokemon.notCustom"
+        mat-icon-button
+        color="primary"
+        (click)="seeDetails()"
+      >
         <mat-icon>visibility</mat-icon>
       </button>
     </mat-card-actions>

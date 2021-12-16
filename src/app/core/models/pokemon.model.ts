@@ -3,6 +3,7 @@ export interface Pokemon {
   pic: string;
   name: string;
   inTeam?: boolean;
+  notCustom?: boolean;
 }
 
 export interface ServiceResponse {
