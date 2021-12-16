@@ -32,7 +32,9 @@ export class ListComponent implements OnInit {
       ).pipe(
         map(([obs1, obs2]) => [...obs1, ...obs2]),
         map((pokemons: Pokemon[]) =>
-          pokemons.filter((pokemon: Pokemon) => pokemon.name.includes(search))
+          pokemons.filter((pokemon: Pokemon) =>
+            pokemon.name.toLowerCase().includes(search.toLowerCase())
+          )
         )
       );
     } else {

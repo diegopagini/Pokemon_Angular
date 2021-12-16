@@ -1,7 +1,7 @@
 <ng-container *ngIf="pokemon">
   <mat-card class="card animate__animated animate__fadeIn">
     <mat-card-header class="card-header">
-      <mat-card-title>{{ pokemon.name }}</mat-card-title>
+      <mat-card-title>{{ pokemon.name | lowercase }}</mat-card-title>
     </mat-card-header>
     <mat-card-content class="card-content">
       <img [src]="pokemon.pic | safe" [alt]="pokemon.name" loading="lazy" />
