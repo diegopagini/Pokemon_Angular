@@ -1,7 +1,8 @@
 <ng-container *ngIf="route">
   <mat-card
+    [routerLink]="route.path"
     [ngStyle]="{ 'background-color': route.background_color }"
-    class="card"
+    class="card animate__animated animate__pulse"
   >
     <mat-card-header>
       <mat-card-title>{{ route.name | uppercase }}</mat-card-title>

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
-import { SharedService } from '../../services/shared.service';
+import { SharedService } from '../../../../shared/services/shared.service';
 import Swal from 'sweetalert2';
 
 @Component({
