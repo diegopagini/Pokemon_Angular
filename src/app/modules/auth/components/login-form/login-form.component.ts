@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'pok-login-form',
@@ -9,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
+  @Output() loginEmitter = new EventEmitter<FormGroup>();
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -35,7 +35,7 @@ export class LoginFormComponent implements OnInit {
 
   submit(): void {
     if (this.loginForm.valid) {
-      this.router.navigate(['home']);
+      this.loginEmitter.emit(this.loginForm.value);
     } else {
       this.loginForm.markAllAsTouched();
     }

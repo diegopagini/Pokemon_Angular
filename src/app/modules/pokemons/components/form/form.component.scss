@@ -1,11 +1,11 @@
+@import "../../../../../assets/styles/base";
+
 .form {
   display: flex;
   flex-direction: column;
   min-width: 50vw;
-
   padding: 3rem 1rem;
   text-align: center;
-  width: 100%;
 
   h2 {
     letter-spacing: 5px;
@@ -23,5 +23,9 @@
 
   .input-img {
     visibility: hidden;
+  }
+
+  .btn-container {
+    @include center;
   }
 }

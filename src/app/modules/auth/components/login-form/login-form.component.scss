@@ -1,13 +1,22 @@
 @import "../../../../../assets/styles/base";
 
-.login-form {
-  min-width: 50vw;
+:host {
+  padding: 0 1rem;
+  .login-form {
+    min-width: 50vw;
 
-  mat-form-field {
-    width: 100%;
-  }
+    h2 {
+      letter-spacing: 5px;
+      text-align: center;
+      text-transform: uppercase;
+    }
 
-  .btn-container {
-    @include center;
+    mat-form-field {
+      width: 100%;
+    }
+
+    .btn-container {
+      @include center;
+    }
   }
 }
