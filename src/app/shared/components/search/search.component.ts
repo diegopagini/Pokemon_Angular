@@ -23,6 +23,7 @@ import {
 })
 export class SearchComponent implements AfterViewInit, OnDestroy {
   @ViewChild('input') input: ElementRef;
+
   @Output() emitSearch = new EventEmitter<string>();
   searchValue: string;
   private unsubscribe$ = new Subject<void>();
@@ -38,7 +39,7 @@ export class SearchComponent implements AfterViewInit, OnDestroy {
       .subscribe();
   }
 
-  search() {
+  search(): void {
     this.emitSearch.emit(this.searchValue);
   }
 

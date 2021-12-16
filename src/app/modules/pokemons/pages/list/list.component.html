@@ -1,4 +1,5 @@
 <pok-search (emitSearch)="searchPokemons($event)"></pok-search>
+
 <ng-container *ngIf="pokemons$ | async as pokemons; else loading">
   <pok-list-grid [pokemons]="pokemons"></pok-list-grid>
 </ng-container>
