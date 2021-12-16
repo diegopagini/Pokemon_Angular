@@ -1,0 +1,35 @@
+<form class="form" autocomplete="off" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Create your custom pokemon</h2>
+  <hr />
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput />
+  </mat-form-field>
+
+  <div class="group">
+    <mat-form-field appearance="fill">
+      <mat-label>Height</mat-label>
+      <input formControlName="height" type="number" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Weight</mat-label>
+      <input formControlName="weight" type="number" matInput />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field (click)="handleClick()">
+    <mat-label>Image</mat-label>
+    <input formControlName="image" matInput />
+  </mat-form-field>
+  <input
+    #img
+    class="input-img"
+    type="file"
+    [(ngModel)]="image"
+    formControlName="upload"
+    (ngModelChange)="uploadImg($event)"
+  />
+
+  <button mat-raised-button>Create</button>
+</form>

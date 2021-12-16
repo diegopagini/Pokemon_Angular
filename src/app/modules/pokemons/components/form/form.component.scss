@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 50vw;
+
+  padding: 3rem 1rem;
+  text-align: center;
+  width: 100%;
+
+  h2 {
+    letter-spacing: 5px;
+  }
+
+  .group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    mat-form-field {
+      min-width: 48%;
+    }
+  }
+
+  .input-img {
+    visibility: hidden;
+  }
+}
