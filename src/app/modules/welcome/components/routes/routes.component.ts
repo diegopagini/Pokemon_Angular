@@ -16,7 +16,7 @@ export class RoutesComponent {
     {
       name: 'form',
       path: '/pokemons/form',
-      background_color: '#FE1111',
+      background_color: '#d32828',
       img: 'https://www.labnetinternational.com/sites/www.labnetinternational.com/files/blogsies/header-images/iStock-949946968.jpg',
     },
     {
