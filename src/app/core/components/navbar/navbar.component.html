@@ -1,6 +1,6 @@
 <mat-toolbar>
   <nav class="nav">
-    <ul class="nav-list">
+    <ul class="nav-list" *ngIf="!(isMobile$ | async); else mobileNav">
       <li routerLink="/home" routerLinkActive="active" class="nav-list-item">
         Home
       </li>
@@ -28,3 +28,11 @@
     </ul>
   </nav>
 </mat-toolbar>
+
+<ng-template #mobileNav>
+  <div>
+    <button (click)="handleClick()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</ng-template>

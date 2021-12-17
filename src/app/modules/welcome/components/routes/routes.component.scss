@@ -4,9 +4,17 @@
   background-color: rgba($color: #000000, $alpha: 0.1);
   border-radius: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   grid-gap: 2rem;
+  min-height: calc(100vh - 144px);
   margin: 0 auto;
   max-width: 1440px;
   padding: 2rem;
+
+  @media (min-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    min-height: calc(100vh - 160px);
+  }
 }

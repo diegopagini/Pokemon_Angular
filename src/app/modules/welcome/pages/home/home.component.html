@@ -1,5 +1,13 @@
-<pok-navbar></pok-navbar>
-<main class="container">
-  <pok-routes></pok-routes>
-</main>
-<pok-footer></pok-footer>
+<mat-drawer-container autosize (backdropClick)="opened = false">
+  <pok-navbar
+    [opened]="opened"
+    (sideNavEmitter)="showSideNav($event)"
+  ></pok-navbar>
+  <mat-drawer [opened]="opened">
+    <pok-mobile-nav (navEmitter)="opened = false"></pok-mobile-nav>
+  </mat-drawer>
+  <main class="container">
+    <pok-routes></pok-routes>
+  </main>
+  <pok-footer></pok-footer>
+</mat-drawer-container>

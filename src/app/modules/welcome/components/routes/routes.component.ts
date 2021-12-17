@@ -11,7 +11,7 @@ export class RoutesComponent {
       name: 'list',
       path: '/pokemons/list',
       background_color: '#C8C353',
-      img: 'https://cdn.wallpapersafari.com/46/95/9UWjzM.jpg',
+      img: 'https://www.xtrafondos.com/wallpapers/pokebolas-6892.jpg',
     },
     {
       name: 'form',

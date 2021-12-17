@@ -1,12 +1,21 @@
 @import "../../../../../assets/styles/base";
 
 :host {
+  padding: 1rem;
+
   .card {
     cursor: pointer;
+    max-height: 100%;
+    max-width: 100%;
 
-    img {
-      max-height: 378px;
-      width: 100%;
+    mat-card-content {
+      @include center;
+
+      img {
+        border-radius: 1rem;
+        max-width: 100%;
+        object-fit: fill;
+      }
     }
 
     mat-card-header {

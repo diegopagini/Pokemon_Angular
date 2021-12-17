@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './pokemons.component.html',
   styleUrls: ['./pokemons.component.scss'],
 })
-export class PokemonsComponent {}
+export class PokemonsComponent {
+  opened: boolean;
+
+  showSideNav(event: boolean): void {
+    this.opened = event;
+  }
+}
