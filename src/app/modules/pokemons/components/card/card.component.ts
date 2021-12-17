@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 })
 export class CardComponent {
   @Input() pokemon: Pokemon;
-  @Input() inTeam: boolean = false;
   @Output() pokeEmitter = new EventEmitter<Pokemon>();
 
   constructor(private router: Router, private sharedService: SharedService) {}
@@ -21,6 +20,7 @@ export class CardComponent {
     this.pokeEmitter.emit(this.pokemon);
     if (this.pokemon.inTeam) {
       this.sharedService.addToTeam(this.pokemon);
+
       Swal.fire({
         position: 'top',
         icon: 'success',
@@ -29,6 +29,8 @@ export class CardComponent {
         timer: 2000,
       });
     } else {
+      this.sharedService.removeFromTeam(this.pokemon);
+
       Swal.fire({
         position: 'top',
         icon: 'error',

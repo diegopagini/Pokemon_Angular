@@ -1,7 +1,6 @@
 <ng-container *ngIf="pokemons$ | async as pokemons">
   <pok-list-grid
     *ngIf="pokemons.length > 0; else noPokemons"
-    [inTeam]="true"
     [pokemons]="pokemons"
   ></pok-list-grid>
 </ng-container>

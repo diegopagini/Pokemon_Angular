@@ -1,7 +1,6 @@
 <ng-container *ngIf="pokemons">
   <section class="list">
     <pok-card
-      [inTeam]="inTeam"
       *ngFor="let pokemon of pokemons"
       [pokemon]="pokemon"
       (pokeEmitter)="updatePokemon($event)"

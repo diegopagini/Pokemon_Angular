@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
 
 @Injectable({
@@ -25,6 +25,15 @@ export class SharedService {
     const previousValue = this.subject.value;
     const updatedValue = [...previousValue, pokemon];
     this.subject.next(updatedValue);
+  }
+
+  removeFromTeam(pokemonToRemove: Pokemon): void {
+    this.pokemonTeam$.pipe(take(1)).subscribe((pokemons: Pokemon[]) => {
+      const newList = pokemons.filter(
+        (pokemon: Pokemon) => pokemon.id !== pokemonToRemove.id
+      );
+      this.subject.next(newList);
+    });
   }
 
   createCustomPokemon(pokemon: any): void {
