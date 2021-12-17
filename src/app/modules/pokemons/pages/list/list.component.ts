@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable } from 'rxjs';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
-import { ApiService } from 'src/app/core/services/api.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { PokemonsService } from '../../services/pokemons.service';
 
 @Component({
   selector: 'pok-list',
@@ -13,23 +13,23 @@ export class ListComponent implements OnInit {
   pokemons$: Observable<Pokemon[]>;
 
   constructor(
-    private apiService: ApiService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private pokemonsService: PokemonsService
   ) {}
 
   ngOnInit(): void {
-    this.pokemons$ = combineLatest(
-      this.apiService.getAllPokemons(),
-      this.sharedService.customPokemons
-    ).pipe(map(([obs1, obs2]) => [...obs1, ...obs2]));
+    this.pokemons$ = combineLatest([
+      this.pokemonsService.pokemons$,
+      this.sharedService.customPokemons,
+    ]).pipe(map(([obs1, obs2]) => [...obs1, ...obs2]));
   }
 
   searchPokemons(search: string): void {
     if (search.length > 0) {
-      this.pokemons$ = combineLatest(
-        this.apiService.getAllPokemons(),
-        this.sharedService.customPokemons
-      ).pipe(
+      this.pokemons$ = combineLatest([
+        this.pokemonsService.pokemons$,
+        this.sharedService.customPokemons,
+      ]).pipe(
         map(([obs1, obs2]) => [...obs1, ...obs2]),
         map((pokemons: Pokemon[]) =>
           pokemons.filter((pokemon: Pokemon) =>
@@ -38,10 +38,14 @@ export class ListComponent implements OnInit {
         )
       );
     } else {
-      this.pokemons$ = combineLatest(
-        this.apiService.getAllPokemons(),
-        this.sharedService.customPokemons
-      ).pipe(map(([obs1, obs2]) => [...obs1, ...obs2]));
+      this.pokemons$ = combineLatest([
+        this.pokemonsService.pokemons$,
+        this.sharedService.customPokemons,
+      ]).pipe(map(([obs1, obs2]) => [...obs1, ...obs2]));
     }
+  }
+
+  updateList(pokemon: Pokemon): void {
+    this.pokemonsService.updatePokemonList(pokemon);
   }
 }

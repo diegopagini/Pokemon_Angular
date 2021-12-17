@@ -4,6 +4,7 @@
       [inTeam]="inTeam"
       *ngFor="let pokemon of pokemons"
       [pokemon]="pokemon"
+      (pokeEmitter)="updatePokemon($event)"
     ></pok-card>
   </section>
 </ng-container>

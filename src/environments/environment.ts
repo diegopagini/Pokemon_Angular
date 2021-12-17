@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   baseUrl: 'https://pokeapi.co/api/v2',
+  picUrl:
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon',
 };
 
 /*
