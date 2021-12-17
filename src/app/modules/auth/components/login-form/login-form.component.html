@@ -10,11 +10,40 @@
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input type="email" matInput formControlName="email" />
+      <mat-error
+        *ngIf="
+          loginForm.get('email')?.hasError('required') &&
+          !loginForm.get('email')?.hasError('email')
+        "
+        >This field is required.</mat-error
+      >
+      <mat-error
+        *ngIf="
+          loginForm.get('email')?.hasError('email') &&
+          !loginForm.get('email')?.hasError('required')
+        "
+        >Must be a valid email.</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
       <input type="password" matInput formControlName="password" />
+      <mat-error
+        *ngIf="
+          loginForm.get('password')?.hasError('required') &&
+          !loginForm.get('password')?.hasError('pattern')
+        "
+        >This field is required.</mat-error
+      >
+      <mat-error
+        *ngIf="
+          !loginForm.get('password')?.hasError('required') &&
+          loginForm.get('password')?.hasError('pattern')
+        "
+        >The password must have least 8 characters in length, lowercase letters,
+        uppercase letters, numbers and special characters</mat-error
+      >
     </mat-form-field>
 
     <div class="btn-container">

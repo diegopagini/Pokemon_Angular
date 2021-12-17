@@ -18,7 +18,11 @@ export class PokemonsService {
 
   updatePokemonList(pokemon: Pokemon): void {
     const previousValue = this.subject.value;
-    const updatedValue = [...previousValue, pokemon];
+
+    const updatedValue = [
+      pokemon,
+      ...previousValue.filter((el) => el.id !== pokemon.id),
+    ];
     this.subject.next(updatedValue);
   }
 }
