@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "pokemon-angular-578e9"
+  },
+  "targets": {
+    "pokemon-angular-578e9": {
+      "hosting": {
+        "pok": [
+          "pokemon-angular-578e9"
+        ]
+      }
+    }
   }
 }

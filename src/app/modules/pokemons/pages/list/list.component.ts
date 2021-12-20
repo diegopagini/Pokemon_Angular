@@ -23,8 +23,7 @@ export class ListComponent implements OnInit {
       this.sharedService.customPokemons,
     ]).pipe(
       map(([obs1, obs2]) => [...obs1, ...obs2]),
-      map(this.sharedService.sortData),
-      tap(console.log)
+      map(this.sharedService.sortData)
     );
   }
 
