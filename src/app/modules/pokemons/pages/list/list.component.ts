@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { combineLatest, map, Observable, tap } from 'rxjs';
+import { combineLatest, delay, map, Observable, tap } from 'rxjs';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { PokemonsService } from '../../services/pokemons.service';
@@ -11,6 +11,7 @@ import { PokemonsService } from '../../services/pokemons.service';
 })
 export class ListComponent implements OnInit {
   pokemons$: Observable<Pokemon[]>;
+  empty = false;
 
   constructor(
     private sharedService: SharedService,
@@ -23,7 +24,8 @@ export class ListComponent implements OnInit {
       this.sharedService.customPokemons,
     ]).pipe(
       map(([obs1, obs2]) => [...obs1, ...obs2]),
-      map(this.sharedService.sortData)
+      map(this.sharedService.sortData),
+      delay(1500)
     );
   }
 
@@ -39,6 +41,13 @@ export class ListComponent implements OnInit {
             pokemon.name.toLowerCase().includes(search.toLowerCase())
           )
         ),
+        tap((pokemons: Pokemon[]) => {
+          if (!pokemons.length) {
+            this.empty = true;
+          } else {
+            this.empty = false;
+          }
+        }),
         map(this.sharedService.sortData)
       );
     } else {

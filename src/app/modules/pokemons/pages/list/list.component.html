@@ -5,6 +5,23 @@
     (listEmitter)="updateList($event)"
     [pokemons]="pokemons"
   ></pok-list-grid>
+
+  <div class="empty" *ngIf="!pokemons.length && empty">
+    <h3 class="jt --debug">
+      <span class="jt__row">
+        <span class="jt__text">There are no pokemons with that name...</span>
+      </span>
+      <span class="jt__row jt__row--sibling" aria-hidden="true">
+        <span class="jt__text">There are no pokemons with that name...</span>
+      </span>
+      <span class="jt__row jt__row--sibling" aria-hidden="true">
+        <span class="jt__text">There are no pokemons with that name...</span>
+      </span>
+      <span class="jt__row jt__row--sibling" aria-hidden="true">
+        <span class="jt__text">There are no pokemons with that name...</span>
+      </span>
+    </h3>
+  </div>
 </ng-container>
 
 <ng-template #loading>
