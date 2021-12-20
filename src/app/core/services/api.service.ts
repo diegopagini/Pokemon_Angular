@@ -12,20 +12,9 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getAllPokemons(): Observable<Pokemon[]> {
-    return this.http.get<ServiceResponse>(`/pokemon?limit=1000`).pipe(
-      map(this.transformData),
-      map((response: Pokemon[]) =>
-        response.sort((a: Pokemon, b: Pokemon) => {
-          if (a.name < b.name) {
-            return -1;
-          }
-          if (a.name > b.name) {
-            return 1;
-          }
-          return 0;
-        })
-      )
-    );
+    return this.http
+      .get<ServiceResponse>(`/pokemon?limit=1000`)
+      .pipe(map(this.transformData));
   }
 
   getPokemon(id: string): Observable<PokemonDetails> {

@@ -41,4 +41,10 @@ export class SharedService {
     const updatedValue = [...previousValue, pokemon];
     this.customSubject.next(updatedValue);
   }
+
+  sortData(response: Pokemon[]): Pokemon[] {
+    return response.sort((a: Pokemon, b: Pokemon) => {
+      return Number(a.id) - Number(b.id);
+    });
+  }
 }
