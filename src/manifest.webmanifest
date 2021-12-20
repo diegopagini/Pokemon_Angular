@@ -1,7 +1,7 @@
 {
-  "name": "pok",
-  "short_name": "pok",
-  "theme_color": "#1976d2",
+  "name": "pokemon",
+  "short_name": "pokemon",
+  "theme_color": "#e12e46",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
