@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PokemonGuard } from 'src/app/core/guards/pokemon.guard';
 import { PokemonsComponent } from './pokemons.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
         path: 'details/:id',
         loadChildren: () =>
           import('./pages/details/details.module').then((m) => m.DetailsModule),
+        canActivate: [PokemonGuard],
       },
       {
         path: 'team',

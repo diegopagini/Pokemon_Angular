@@ -2,6 +2,7 @@
   <section class="details animate__animated animate__fadeIn">
     <mat-card>
       <div
+        *ngIf="pokemon.sprites?.other?.home?.front_default"
         mat-card-avatar
         [ngStyle]="{
           'background-image':
@@ -16,10 +17,11 @@
       </mat-card-header>
       <mat-card-content>
         <img
+          *ngIf="pokemon.sprites?.other?.dream_world?.front_default"
           [src]="pokemon.sprites?.other?.dream_world?.front_default"
           [alt]="pokemon.name"
         />
-        <div class="details-info">
+        <div *ngIf="pokemon.abilities.length" class="details-info">
           <span>Abilities:</span>
           <hr />
           <button mat-button *ngFor="let ability of pokemon.abilities">
@@ -27,7 +29,7 @@
           </button>
         </div>
 
-        <div class="details-info">
+        <div *ngIf="pokemon.moves.length" class="details-info">
           <span>Moves:</span>
           <hr />
           <button mat-button *ngFor="let move of pokemon.moves">
@@ -35,7 +37,7 @@
           </button>
         </div>
 
-        <div class="details-info">
+        <div *ngIf="pokemon.types.length" class="details-info">
           <span>Types:</span>
           <hr />
           <button mat-button *ngFor="let type of pokemon.types">

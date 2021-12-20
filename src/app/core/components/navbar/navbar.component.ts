@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   Component,
   EventEmitter,
+  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -16,6 +17,7 @@ import { Observable, pluck, Subject, takeUntil } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   isMobile$: Observable<boolean>;
+  installEvent: any;
   @Output() sideNavEmitter = new EventEmitter<boolean>();
   @Input() opened: boolean = false;
   private unsubscribe$ = new Subject<void>();
@@ -26,6 +28,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isMobile$ = this.breakpoint
       .observe(`(max-width: 991px)`)
       .pipe(pluck('matches'), takeUntil(this.unsubscribe$));
+  }
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onBeforeInstallPrompt(event: Event): void {
+    console.log(event);
+    event.preventDefault();
+    this.installEvent = event;
+  }
+
+  installByUser(): void {
+    if (this.installEvent) {
+      this.installEvent.prompt();
+      this.installEvent.userChoice.then((rta: any) => {
+        console.log(rta);
+      });
+    }
   }
 
   handleClick(): void {

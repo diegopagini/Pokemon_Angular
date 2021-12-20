@@ -2,13 +2,14 @@
 
 .spinner {
   height: 100%;
+  min-height: 70vh;
   width: 100%;
 
   @include center;
 
   .sk-chase {
-    width: 40px;
-    height: 40px;
+    width: 75px;
+    height: 75px;
     position: relative;
     animation: sk-chase 2.5s infinite linear both;
   }

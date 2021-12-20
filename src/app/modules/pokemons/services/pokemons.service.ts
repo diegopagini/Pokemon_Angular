@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 export class PokemonsService {
   private subject = new BehaviorSubject<Pokemon[]>([]);
   pokemons$: Observable<Pokemon[]> = this.subject.asObservable();
+  private canNavigate: boolean = false;
 
   constructor(private apiService: ApiService) {
     this.apiService
@@ -24,5 +25,13 @@ export class PokemonsService {
       ...previousValue.filter((el) => el.id !== pokemon.id),
     ];
     this.subject.next(updatedValue);
+  }
+
+  get canNav(): boolean {
+    return this.canNavigate;
+  }
+
+  setCanNavitage(): void {
+    this.canNavigate = true;
   }
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/core/models/pokemon.model';
 import { SharedService } from '../../../../shared/services/shared.service';
 import Swal from 'sweetalert2';
+import { PokemonsService } from '../../services/pokemons.service';
 
 @Component({
   selector: 'pok-card',
@@ -13,7 +14,11 @@ export class CardComponent {
   @Input() pokemon: Pokemon;
   @Output() pokeEmitter = new EventEmitter<Pokemon>();
 
-  constructor(private router: Router, private sharedService: SharedService) {}
+  constructor(
+    private router: Router,
+    private sharedService: SharedService,
+    private pokemonService: PokemonsService
+  ) {}
 
   addToTeam(): void {
     this.pokemon.inTeam = !this.pokemon.inTeam;
@@ -42,6 +47,7 @@ export class CardComponent {
   }
 
   seeDetails(): void {
+    this.pokemonService.setCanNavitage();
     this.router.navigate(['pokemons/details', this.pokemon.id]);
   }
 }
